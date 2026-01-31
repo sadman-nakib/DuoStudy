@@ -14,7 +14,6 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Critical Theme Script - executes before body to prevent flicker
         (function() {
             try {
                 const settings = JSON.parse(localStorage.getItem('duostudy_settings') || '{}');
@@ -50,7 +49,7 @@
         body {
             font-family: 'Inter', sans-serif;
             -webkit-tap-highlight-color: transparent;
-            overscroll-behavior-y: none; /* Prevents pull-to-refresh */
+            overscroll-behavior-y: none;
             height: 100vh;
             width: 100vw;
             position: fixed;
@@ -70,19 +69,16 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Smoother Transitions */
         * {
             transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
                         border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                         transform 0.1s ease-out;
         }
 
-        /* Native Button Feel */
         button:active {
             transform: scale(0.96);
         }
 
-        /* Safe area aware elements */
         .safe-top { padding-top: var(--sat); }
         .safe-bottom { padding-bottom: var(--sab); }
         
@@ -92,26 +88,22 @@
             -webkit-overflow-scrolling: touch;
         }
     </style>
-    <script type="importmap">
+<script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@19.0.0",
-    "react-dom": "https://esm.sh/react-dom@19.0.0",
-    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
-    "lucide-react": "https://esm.sh/lucide-react@0.463.0",
-    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2.46.1",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
     "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
     "vite": "https://esm.sh/vite@^7.3.1",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@^2.93.3"
   }
 }
 </script>
 </head>
 <body class="bg-[#F7F9FF] dark:bg-[#1A1C1E] text-[#1D1B20] dark:text-[#E6E1E5]">
     <div id="root"></div>
-    <!-- Note: index.tsx needs to be index.js for some servers, 
-         but we keep it here as it's processed by your local build tool. -->
     <script type="module" src="./index.tsx"></script>
 </body>
 </html>
