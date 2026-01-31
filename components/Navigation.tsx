@@ -20,11 +20,11 @@ export const Navigation: React.FC<NavigationProps> = ({
   ];
 
   const hapticFeedback = () => {
-    if ('vibrate' in navigator) navigator.vibrate(10);
+    if ('vibrate' in navigator) navigator.vibrate(12);
   };
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-[#F0F4F8] dark:bg-[#202124] border-t border-gray-200 dark:border-gray-800 px-2 pb-6 pt-3 flex justify-between items-center z-40 rounded-t-3xl shadow-2xl">
+    <nav className="fixed bottom-0 left-0 right-0 bg-[#F0F4F8]/90 dark:bg-[#202124]/90 backdrop-blur-xl border-t border-gray-200/50 dark:border-gray-800/50 px-2 pt-3 pb-[calc(1rem+env(safe-area-inset-bottom))] flex justify-between items-center z-40 rounded-t-[32px] shadow-[0_-8px_30px_rgb(0,0,0,0.04)] select-none">
       {tabs.map((tab) => {
         const Icon = tab.icon;
         const isActive = activeTab === tab.id;
@@ -35,15 +35,15 @@ export const Navigation: React.FC<NavigationProps> = ({
               hapticFeedback();
               setActiveTab(tab.id);
             }}
-            className="flex flex-col items-center gap-1 relative group flex-1"
+            className="flex flex-col items-center gap-1.5 relative group flex-1 transition-all"
           >
             <div className={`
-              px-3 py-1 rounded-full transition-all duration-300
+              px-6 py-2 rounded-full transition-all duration-300
               ${isActive ? 'bg-[#D3E3FD] dark:bg-[#004A77] text-[#041E49] dark:text-[#C2E7FF]' : 'text-[#444746] dark:text-[#C4C7C5]'}
             `}>
-              <Icon size={22} strokeWidth={isActive ? 2.5 : 2} />
+              <Icon size={24} strokeWidth={isActive ? 2.5 : 2} />
             </div>
-            <span className={`text-[9px] font-medium truncate max-w-full px-1 ${isActive ? 'text-[#041E49] dark:text-[#C2E7FF]' : 'text-[#444746] dark:text-[#C4C7C5]'}`}>
+            <span className={`text-[10px] font-bold tracking-tight uppercase px-1 transition-colors ${isActive ? 'text-[#041E49] dark:text-[#C2E7FF]' : 'text-[#444746] dark:text-[#C4C7C5]'}`}>
               {tab.label}
             </span>
           </button>
